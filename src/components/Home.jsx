@@ -75,12 +75,13 @@ export default function Home() {
             <FaWhatsapp />
           </motion.a>
           <motion.a
-            href="https://www.instagram.com/astrowatch2025?igsh=MXM4MHFnaG5mdnR1Ng=="
-            className="text-3xl sm:text-4xl text-pink-500 hover:text-pink-700 p-3 sm:p-4 rounded-full bg-pink-100 hover:bg-pink-200 shadow-xl transition transform hover:scale-110"
-            whileHover={{ scale: 1.2 }}
-          >
-            <FaInstagram />
-          </motion.a>
+  href="https://www.instagram.com/astrowatch2025"
+  className="text-3xl sm:text-4xl text-pink-500 hover:text-pink-700 p-3 sm:p-4 rounded-full bg-pink-100 hover:bg-pink-200 shadow-xl transition transform hover:scale-110"
+  whileHover={{ scale: 1.2 }}
+>
+  <FaInstagram />
+</motion.a>
+
         </div>
 
         {/* Feature Cards */}
