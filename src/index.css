@@ -1,0 +1,95 @@
+/* Add at the top of your main CSS file */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;700&display=swap');
+/* Your other CSS rules */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f5e0ff, #ffe0f0);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+
+.dark body {
+  background: linear-gradient(135deg, #2e2e3a, #1e1e2e);
+  color: white;
+}
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes smoke {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-30px) scale(1.1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-smoke {
+  animation: smoke 12s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 8s linear infinite;
+}
+/* Add this to your global CSS or in the relevant component's style */
+button, .btn, .cta-button {
+  background: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+button:hover, .cta-button:hover {
+  background: rgba(0, 0, 0, 0.7); /* Darken the background on hover */
+  transform: translateY(-2px); /* Slight raise on hover */
+}
+html {
+  scroll-behavior: smooth;
+}
+
