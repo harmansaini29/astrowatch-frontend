@@ -8,6 +8,22 @@ import {
   GiWaterDrop, GiTrophyCup, GiEternalLove, GiTornado, GiSpiderWeb
 } from "react-icons/gi";
 
+// Local static horoscope data
+const horoscopeData = {
+  aries: "You will feel energized and bold today. Take charge and lead.",
+  taurus: "Stability and comfort surround you. Enjoy small luxuries.",
+  gemini: "Expect dynamic communication. Great time to connect and learn.",
+  cancer: "Home and emotions take focus. Nurture yourself and others.",
+  leo: "Spotlight is on you! Express creativity and confidence.",
+  virgo: "Focus on details and self-improvement. You’ll be productive.",
+  libra: "Balance and harmony rule. Favor relationships and beauty.",
+  scorpio: "Deep emotions surface. Trust your intuition and explore truths.",
+  sagittarius: "Adventure calls! Think big and be optimistic.",
+  capricorn: "Discipline brings rewards. Take steady, focused steps.",
+  aquarius: "Innovation is key. Share ideas and embrace uniqueness.",
+  pisces: "Dreamy and empathetic vibes. Let creativity flow.",
+};
+
 const zodiacSigns = [
   { name: 'aries', icon: <FaMars /> },
   { name: 'taurus', icon: <FaGem /> },
@@ -28,25 +44,8 @@ export default function HoroscopeWidget() {
   const [horoscope, setHoroscope] = useState(null);
 
   useEffect(() => {
-    const fetchHoroscope = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/api/horoscope", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ sign: selectedSign.name, day: "today" }),
-        });
-
-        const data = await response.json();
-        setHoroscope(data.description);
-      } catch (error) {
-        console.error("Error fetching horoscope:", error);
-        setHoroscope("Failed to fetch horoscope.");
-      }
-    };
-
-    fetchHoroscope();
+    const localDescription = horoscopeData[selectedSign.name];
+    setHoroscope(localDescription);
   }, [selectedSign]);
 
   return (
@@ -74,10 +73,7 @@ export default function HoroscopeWidget() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options
-                className="absolute mt-2 w-full overflow-auto rounded-md bg-white dark:bg-gray-800 py-1 text-base shadow-lg ring-1 ring-black/10 focus:outline-none z-50 max-h-60"
-                style={{ top: '100%', left: 0, zIndex: 100, maxHeight: '300px', overflowY: 'auto', marginTop: '8px' }}
-              >
+              <Listbox.Options className="absolute mt-2 w-full overflow-auto rounded-md bg-white dark:bg-gray-800 py-1 text-base shadow-lg ring-1 ring-black/10 focus:outline-none z-50 max-h-60">
                 {zodiacSigns.map((sign, idx) => (
                   <Listbox.Option
                     key={idx}
