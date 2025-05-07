@@ -25,7 +25,7 @@ export default function PaymentPage() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     // UPI link without fixed amount, so user can enter it manually
-    const upiURL = "upi://pay?pa=hermansinghsaini-1@okhdfcbank&pn=AstroWatch&cu=INR";
+    const upiURL = "upi://pay?pa=hermansinghsaini-1@okhdfcbank&pn=AstroWatch";
 
     localStorage.setItem('attemptedPayment', 'true');
 
