@@ -20,22 +20,23 @@ export default function PaymentPage() {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleUPIPaymentClick = (e) => {
-    e.preventDefault();
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+const handleUPIPaymentClick = (e) => {
+  e.preventDefault();
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    // UPI link without fixed amount, so user can enter it manually
-    const upiURL = "upi://pay?pa=hermansinghsaini-1@okhdfcbank&pn=AstroWatch";
+  // Minimal UPI URL for normal account, no amount param
+  const upiURL = "upi://pay?pa=hermansinghsaini-1@okhdfcbank";
 
-    localStorage.setItem('attemptedPayment', 'true');
+  localStorage.setItem('attemptedPayment', 'true');
 
-    if (isMobile) {
-      toast.success("Redirecting to your UPI app...");
-      window.location.href = upiURL;
-    } else {
-      toast("Please scan the QR code using your mobile UPI app.");
-    }
-  };
+  if (isMobile) {
+    toast.success("Redirecting to your UPI app... Please enter amount manually.");
+    window.location.href = upiURL;
+  } else {
+    toast("Please scan the QR code using your mobile UPI app and enter the amount manually.");
+  }
+};
+
 
   const handleConfirmPayment = () => {
     toast.success("Thank you! Redirecting...");
