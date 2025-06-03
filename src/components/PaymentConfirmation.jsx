@@ -37,6 +37,9 @@ const PaymentConfirmation = () => {
       return;
     }
 
+    // Show waiting toast
+    const loadingToast = toast.loading("Submitting your payment... Please wait 5 seconds");
+
     const formData = new FormData();
     formData.append("transactionId", trimmedId);
     formData.append("senderName", trimmedName);
@@ -45,6 +48,7 @@ const PaymentConfirmation = () => {
     const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
     if (!SERVER_URL) {
+      toast.dismiss(loadingToast);
       toast.error("Server URL is not defined. Please check the environment settings.");
       return;
     }
@@ -52,12 +56,17 @@ const PaymentConfirmation = () => {
     console.log("📡 Using backend URL:", SERVER_URL);
 
     try {
+      // Simulate 5 second delay for UX
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+
       const response = await fetch(`${SERVER_URL}/api/submit-transaction`, {
         method: 'POST',
         body: formData,
       });
 
       const data = await response.json();
+
+      toast.dismiss(loadingToast);
 
       if (!response.ok) {
         throw new Error(data?.message || "Submission failed");
@@ -66,6 +75,7 @@ const PaymentConfirmation = () => {
       toast.success("Payment submitted successfully!");
       navigate("/thank-you");
     } catch (err) {
+      toast.dismiss(loadingToast);
       toast.error(`Error: ${err.message}`);
     }
   };
