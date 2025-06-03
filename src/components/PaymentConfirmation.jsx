@@ -38,7 +38,7 @@ const PaymentConfirmation = () => {
     }
 
     // Show waiting toast
-    const loadingToast = toast.loading("Submitting your payment... Please wait 5 seconds");
+    const loadingToast = toast.loading("Submitting your payment... Please wait 10-12 seconds");
 
     const formData = new FormData();
     formData.append("transactionId", trimmedId);
