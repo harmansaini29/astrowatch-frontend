@@ -16,6 +16,12 @@ export default function Home() {
   const handleContactClick = () => navigate("/contact");
 
   useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
+  }, []);
+  
+  useEffect(() => {
     if (window.location.pathname !== "/") {
       navigate("/");
     }
@@ -75,16 +81,14 @@ export default function Home() {
             <FaWhatsapp />
           </motion.a>
           <motion.a
-  href="https://www.instagram.com/astro_watch29/"
-  target="_blank" 
-  rel="noopener noreferrer"
-  className="text-3xl sm:text-4xl text-pink-500 hover:text-pink-700 p-3 sm:p-4 rounded-full bg-pink-100 hover:bg-pink-200 shadow-xl transition transform hover:scale-110"
-  whileHover={{ scale: 1.2 }}
->
-  <FaInstagram />
-</motion.a>
-
-
+            href="https://www.instagram.com/astro_watch29?igsh=MXM4MHFnaG5mdnR1Ng=="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-3xl sm:text-4xl text-pink-500 hover:text-pink-700 p-3 sm:p-4 rounded-full bg-pink-100 hover:bg-pink-200 shadow-xl transition transform hover:scale-110"
+            whileHover={{ scale: 1.2 }}
+          >
+            <FaInstagram />
+          </motion.a>
         </div>
 
         {/* Feature Cards */}
@@ -187,13 +191,13 @@ export default function Home() {
                 href="/payment"
                 className="bg-green-600 text-white py-3 rounded-xl text-center font-semibold hover:bg-green-700 transition"
               >
-                Pay ₹501 – Basic Reading
+                Pay ₹501 – Basic Reading (Online)
               </a>
               <a
                 href="/payment"
                 className="bg-purple-600 text-white py-3 rounded-xl text-center font-semibold hover:bg-purple-700 transition"
               >
-                Pay ₹1001 – Premium Reading
+                Pay ₹1001 – Premium Reading (OFFLINE)
               </a>
             </div>
             <button
