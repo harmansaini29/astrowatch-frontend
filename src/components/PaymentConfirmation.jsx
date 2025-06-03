@@ -42,13 +42,14 @@ const PaymentConfirmation = () => {
     formData.append("senderName", trimmedName);
     formData.append("screenshot", screenshot);
 
-    // Fetch the server URL from environment variable
     const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
     if (!SERVER_URL) {
       toast.error("Server URL is not defined. Please check the environment settings.");
       return;
     }
+
+    console.log("📡 Using backend URL:", SERVER_URL);
 
     try {
       const response = await fetch(`${SERVER_URL}/api/submit-transaction`, {
