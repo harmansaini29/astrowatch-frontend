@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BsSunFill, BsMoonStarsFill } from 'react-icons/bs';
-import { motion } from 'framer-motion'; // 👈 add framer-motion
+import { motion } from 'framer-motion';
 
 const ThemeToggle = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -28,8 +28,8 @@ const ThemeToggle = () => {
     <motion.div
       onClick={toggleDarkMode}
       className="cursor-pointer"
-      whileTap={{ scale: 0.95 }} // 👈 shrink slightly on tap
-      whileHover={{ scale: 1.05 }} // 👈 subtle bounce on hover
+      whileTap={{ scale: 0.95 }}
+      whileHover={{ scale: 1.05 }}
       transition={{ type: 'spring', stiffness: 300 }}
     >
       <div className="relative w-16 h-8 flex items-center bg-purple-300 dark:bg-gray-700 rounded-full p-1 shadow-inner transition-colors duration-500">
@@ -44,12 +44,13 @@ const ThemeToggle = () => {
           }}
         />
         <div className="flex justify-between w-full px-2 text-xs z-10">
-          <BsMoonStarsFill
+          {/* Swapped order: Sun icon first, then Moon icon */}
+          <BsSunFill
             className={`transition-colors duration-500 ${
               darkMode ? 'text-yellow-400' : 'text-purple-700'
             }`}
           />
-          <BsSunFill
+          <BsMoonStarsFill
             className={`transition-colors duration-500 ${
               darkMode ? 'text-purple-500' : 'text-yellow-400'
             }`}
